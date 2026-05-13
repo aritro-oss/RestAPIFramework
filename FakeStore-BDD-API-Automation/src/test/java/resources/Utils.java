@@ -10,7 +10,7 @@ import io.restassured.specification.ResponseSpecification;
 
 public class Utils {
 	public static RequestSpecification getRequestSpec() {
-		return new RequestSpecBuilder().setBaseUri(ConfigReader.getProperty("baseURI")).setContentType(ContentType.JSON).log(LogDetail.ALL)
+		return new RequestSpecBuilder().setBaseUri(ConfigReader.getProperty("baseURI")).setContentType(ContentType.JSON).addHeader("Accept", "application/json").log(LogDetail.ALL)
 				.build();
 
 	}

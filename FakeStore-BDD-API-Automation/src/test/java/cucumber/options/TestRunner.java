@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 		features = "src/test/resources/features",
 		glue = "StepDefinitions",
 		plugin = {"pretty", "json:target/jsonreports/cucumber-reports.json"},
-		tags = "@addProduct or @deleteProduct"
+		tags = "@getProduct"
 		)
 public class TestRunner {
 

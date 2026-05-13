@@ -4,7 +4,10 @@ public enum APIResources {
 
 	getProductAPI("/products"),
 	addProductAPI("/products"),
-	deleteProductAPI("/products/{id}");
+	deleteProductAPI("/products/{id}"),
+	updateProductAPI("/products/{id}"),
+	addUserAPI("/users"),
+	authLoginAPI("/auth/login");
 
 
 	private String resource;
