@@ -9,14 +9,16 @@ import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
 public class Utils {
+	
 	public static RequestSpecification getRequestSpec() {
-		return new RequestSpecBuilder().setBaseUri(ConfigReader.getProperty("baseURI")).setContentType(ContentType.JSON).addHeader("Accept", "application/json").log(LogDetail.ALL)
-				.build();
+		return new RequestSpecBuilder().setBaseUri(ConfigReader.getProperty("baseURI"))
+				.setContentType(ContentType.JSON).log(LogDetail.ALL).build();
 
 	}
 	
 	public static ResponseSpecification getResponseSpec(int statusCode) {
-		return new ResponseSpecBuilder().expectStatusCode(statusCode).expectContentType(ContentType.JSON).log(LogDetail.ALL).build();
-		
+		return new ResponseSpecBuilder().expectStatusCode(statusCode).expectContentType(ContentType.JSON)
+				.log(LogDetail.ALL).build();
+
 	}
 }

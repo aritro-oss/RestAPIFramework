@@ -26,6 +26,19 @@ public class stepDefinitions {
 	public void the_api_base_url_is_set() {
 	}
 
+	@When("I call {string} with {string} request")
+	public void i_call_with_request(String resource, String method) {
+
+		APIResources resourceAPI = APIResources.valueOf(resource);
+
+		if (method.equalsIgnoreCase("GET")) {
+			response = given().spec(Utils.getRequestSpec()).when().get(resourceAPI.getResource());
+		} else if (method.equalsIgnoreCase("DELETE")) {
+			response = given().spec(Utils.getRequestSpec()).pathParam("id", id).when()
+					.delete(resourceAPI.getResource());
+		}
+	}
+
 	@When("I call {string} with {string} request with {string}")
 	public void i_call_with_request_with(String resource, String method, String payloadType) {
 		APIResources resourceAPI = APIResources.valueOf(resource);
@@ -98,7 +111,8 @@ public class stepDefinitions {
 
 	@When("I login with created user")
 	public void i_login_with_created_user() {
-		response = given().spec(Utils.getRequestSpec()).body(td.authLoginPayload(username, password)).when().post("/user/login");
+		response = given().spec(Utils.getRequestSpec()).body(td.authLoginPayload(username, password)).when()
+				.post("/user/login");
 	}
 
 }
